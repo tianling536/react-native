@@ -817,7 +817,7 @@ static UIImage *RCTResizeImageIfNeeded(UIImage *image,
 
 - (id)sendRequest:(NSURLRequest *)request withDelegate:(id<RCTURLRequestDelegate>)delegate
 {
-    __block RCTImageLoaderCancellationBlock requestToken;
+    __block RCTImageLoaderCancellationBlock requestToken = ^(void){;};
     requestToken = [self loadImageWithURLRequest:request callback:^(NSError *error, UIImage *image) {
         if (error) {
             [delegate URLRequest:requestToken didCompleteWithError:error];
